@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abhijeet Dwivedi — AI & Backend Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cyan: #00f5d4;
+      --lime: #b8ff57;
+      --orange: #ff6b35;
+      --dark: #060a0f;
+      --dark2: #0d1520;
+      --dark3: #111c2d;
+      --border: rgba(0,245,212,0.15);
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--dark);
+      color: #c8d8e8;
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,245,212,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,212,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-cyan { text-shadow: 0 0 20px rgba(0,245,212,0.6); }
+    .glow-lime { text-shadow: 0 0 20px rgba(184,255,87,0.5); }
+
+    /* Scanline overlay on hero */
+    .scanlines::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+    }
+
+    /* Animated border */
+    .cyber-border {
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .cyber-border::before, .cyber-border::after {
+      content: '';
+      position: absolute;
+      width: 12px; height: 12px;
+    }
+    .cyber-border::before {
+      top: -1px; left: -1px;
+      border-top: 2px solid var(--cyan);
+      border-left: 2px solid var(--cyan);
+    }
+    .cyber-border::after {
+      bottom: -1px; right: -1px;
+      border-bottom: 2px solid var(--cyan);
+      border-right: 2px solid var(--cyan);
+    }
+
+    /* Skill bar */
+    .skill-bar { background: rgba(0,245,212,0.08); border-radius: 2px; overflow: hidden; height: 4px; }
+    .skill-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--lime));
+      width: 0%;
+      transition: width 1.5s cubic-bezier(0.16,1,0.3,1);
+      box-shadow: 0 0 12px rgba(0,245,212,0.5);
+    }
+
+    /* Typing cursor */
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--cyan);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* Float animation */
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .float { animation: float 4s ease-in-out infinite; }
+
+    /* Pulse ring */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+
+    /* Fade-in-up */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .delay-4 { animation-delay: 0.5s; opacity: 0; }
+    .delay-5 { animation-delay: 0.7s; opacity: 0; }
+
+    /* Nav glassmorphism */
+    nav {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Card hover */
+    .tech-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .tech-card:hover {
+      border-color: rgba(0,245,212,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(0,245,212,0.1);
+    }
+
+    /* Gradient text */
+    .grad-text {
+      background: linear-gradient(135deg, var(--cyan) 0%, var(--lime) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* CivicOps map dot pulse */
+    @keyframes mapPulse {
+      0% { transform:scale(1); opacity:0.9; }
+      50% { transform:scale(1.4); opacity:0.5; }
+      100% { transform:scale(1); opacity:0.9; }
+    }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .status-open { background: rgba(255,107,53,0.15); color: #ff6b35; border: 1px solid rgba(255,107,53,0.3); }
+    .status-progress { background: rgba(184,255,87,0.1); color: var(--lime); border: 1px solid rgba(184,255,87,0.3); }
+    .status-resolved { background: rgba(0,245,212,0.1); color: var(--cyan); border: 1px solid rgba(0,245,212,0.3); }
+
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: mapPulse 2s ease-in-out infinite;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: rgba(0,245,212,0.3); border-radius: 4px; }
+
+    /* Section headings line */
+    .section-line {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 48px;
+    }
+    .section-line::after {
+      content: ''; flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0,245,212,0.3), transparent);
+    }
+
+    /* CivicOps issue card */
+    .issue-card {
+      background: var(--dark3);
+      border: 1px solid rgba(0,245,212,0.1);
+      border-radius: 8px;
+      padding: 14px 16px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .issue-card:hover {
+      border-color: rgba(0,245,212,0.3);
+      background: rgba(0,245,212,0.03);
+    }
+    .issue-card.selected {
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px rgba(0,245,212,0.1);
+    }
+
+    /* Map dot marker */
+    .map-marker {
+      position: absolute;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+    }
+    .map-marker::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.2;
+      animation: mapPulse 2s ease-in-out infinite;
+    }
+
+    /* Timeline */
+    .timeline-item {
+      position: relative;
+      padding-left: 28px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 4px; top: 20px;
+      width: 2px;
+      height: calc(100% - 16px);
+      background: linear-gradient(to bottom, var(--cyan), transparent);
+    }
+    .timeline-item:last-child::after { display: none; }
+
+    /* Glitch on name hover */
+    @keyframes glitch {
+      0%,100% { clip-path: inset(0); }
+      20% { clip-path: inset(30% 0 10% 0); transform: skewX(-3deg); }
+      40% { clip-path: inset(60% 0 5% 0); transform: skewX(3deg); }
+      60% { clip-path: inset(10% 0 70% 0); transform: skewX(-2deg); }
+      80% { clip-path: inset(0); }
+    }
+
+    /* Neon button */
+    .neon-btn {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      background: transparent;
+      transition: all 0.3s;
+    }
+    .neon-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .neon-btn:hover::before { transform: scaleX(1); }
+    .neon-btn:hover { color: var(--dark); }
+    .neon-btn span { position: relative; z-index: 1; }
+
+    /* Particle canvas */
+    #particles { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+
+    section { position: relative; z-index: 1; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-[rgba(0,245,212,0.1)] bg-[rgba(6,10,15,0.85)]">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="mono text-sm text-[#00f5d4] font-medium tracking-widest">
+      <span class="opacity-50">~/</span>abhijeet
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#about" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest">ABOUT</a>
+      <a href="#skills" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest">SKILLS</a>
+      <a href="#projects" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest">PROJECTS</a>
+      <a href="#certifications" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest">CERTS</a>
+      <a href="#contact" class="neon-btn mono text-xs px-4 py-2 rounded tracking-widest"><span>CONTACT</span></a>
+    </div>
+    <button id="hamburger" class="md:hidden text-[#00f5d4]" onclick="toggleMenu()">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="flex-col gap-4 px-6 pb-4 md:hidden">
+    <a href="#about" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest" onclick="toggleMenu()">ABOUT</a>
+    <a href="#skills" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest" onclick="toggleMenu()">SKILLS</a>
+    <a href="#projects" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest" onclick="toggleMenu()">PROJECTS</a>
+    <a href="#certifications" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest" onclick="toggleMenu()">CERTS</a>
+    <a href="#contact" class="mono text-xs text-[#c8d8e8] hover:text-[#00f5d4] transition-colors tracking-widest" onclick="toggleMenu()">CONTACT</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="about" class="min-h-screen flex items-center relative overflow-hidden pt-20 scanlines">
+  <canvas id="particles"></canvas>
+
+  <!-- Decorative blobs -->
+  <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-[rgba(0,245,212,0.04)] rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-1/4 left-1/3 w-64 h-64 bg-[rgba(184,255,87,0.03)] rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="mono text-[#00f5d4] text-sm mb-6 fade-up delay-1 opacity-0 tracking-widest">
+          &gt; INITIALIZING PORTFOLIO.SH<span class="cursor"></span>
+        </div>
+        <h1 class="text-6xl lg:text-8xl font-extrabold leading-none mb-4 fade-up delay-2 opacity-0 tracking-tighter" style="font-family:'Syne',sans-serif;">
+          <span class="block text-white">ABHIJEET</span>
+          <span class="block grad-text">DWIVEDI</span>
+        </h1>
+        <div class="flex items-center gap-3 mb-6 fade-up delay-3 opacity-0">
+          <div class="h-px w-12 bg-[#00f5d4]"></div>
+          <span class="mono text-[#00f5d4] text-sm tracking-widest">AI &amp; BACKEND ENGINEER</span>
+        </div>
+        <p class="text-[#7a9bb5] text-lg leading-relaxed mb-8 max-w-md fade-up delay-4 opacity-0">
+          CS undergrad specializing in <span class="text-[#b8ff57] font-semibold">AI/ML</span> & backend systems. 
+          Building scalable, reliable software with cloud-native architectures on <span class="text-[#00f5d4] font-semibold">AWS</span>, Docker, and Python.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10 fade-up delay-5 opacity-0">
+          <a href="#projects" class="neon-btn px-6 py-3 rounded-sm mono text-sm tracking-wider font-semibold"><span>VIEW PROJECTS</span></a>
+          <a href="#contact" class="px-6 py-3 rounded-sm mono text-sm tracking-wider font-semibold bg-[rgba(0,245,212,0.08)] text-[#c8d8e8] border border-[rgba(0,245,212,0.2)] hover:border-[rgba(0,245,212,0.5)] transition-all">CONTACT ME</a>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="grid grid-cols-3 gap-4 fade-up delay-5 opacity-0">
+          <div class="cyber-border p-4 text-center">
+            <div class="text-2xl font-black grad-text mono">B.Tech</div>
+            <div class="text-xs text-[#7a9bb5] mono mt-1 tracking-wider">CS · AI&amp;DS</div>
+          </div>
+          <div class="cyber-border p-4 text-center">
+            <div class="text-2xl font-black text-[#b8ff57] mono">2027</div>
+            <div class="text-xs text-[#7a9bb5] mono mt-1 tracking-wider">GRADUATING</div>
+          </div>
+          <div class="cyber-border p-4 text-center">
+            <div class="text-2xl font-black text-[#ff6b35] mono">2+</div>
+            <div class="text-xs text-[#7a9bb5] mono mt-1 tracking-wider">CERTS</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terminal Card -->
+      <div class="hidden md:block fade-up delay-3 opacity-0">
+        <div class="cyber-border rounded-lg overflow-hidden bg-[#0d1520]">
+          <div class="flex items-center gap-2 px-4 py-3 bg-[#0a1219] border-b border-[rgba(0,245,212,0.1)]">
+            <div class="w-3 h-3 rounded-full bg-[#ff6b35]"></div>
+            <div class="w-3 h-3 rounded-full bg-[#b8ff57]"></div>
+            <div class="w-3 h-3 rounded-full bg-[#00f5d4]"></div>
+            <span class="mono text-xs text-[#7a9bb5] ml-2 tracking-wider">abhijeet@portfolio:~$</span>
+          </div>
+          <div class="p-6 mono text-sm space-y-2" id="terminal-output">
+            <!-- filled by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+    <span class="mono text-xs text-[#00f5d4] tracking-widest">SCROLL</span>
+    <div class="w-px h-12 bg-gradient-to-b from-[#00f5d4] to-transparent animate-bounce"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-28 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="section-line">
+      <span class="mono text-xs text-[#00f5d4] tracking-widest">02_SKILLS</span>
+      <h2 class="text-3xl font-extrabold text-white">Technical Arsenal</h2>
+    </div>
+
+    <!-- Tech Icons Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-16">
+      <!-- Each tool -->
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🐍</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">Python</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Primary Lang</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">☁️</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">AWS</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Cloud Infra</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🐳</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">Docker</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Containers</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🧠</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">ML/AI</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Core Skill</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🐧</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">Linux</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">System Admin</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🔀</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">Git</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Version Control</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">⚡</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">Backend</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">API Development</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🌐</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">JavaScript</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Web Dev</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🎨</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">HTML/CSS</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Frontend</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">🔬</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">Data Science</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Analytics</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">📡</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">REST APIs</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Integration</div>
+      </div>
+      <div class="tech-card rounded-lg p-5 text-center group cursor-default">
+        <div class="text-3xl mb-3 group-hover:scale-110 transition-transform">💻</div>
+        <div class="mono text-xs text-[#00f5d4] font-bold tracking-wider">C Lang</div>
+        <div class="mono text-[10px] text-[#7a9bb5] mt-1">Systems</div>
+      </div>
+    </div>
+
+    <!-- Skill Proficiency Bars -->
+    <div class="grid md:grid-cols-2 gap-10">
+      <div class="cyber-border rounded-lg p-6 bg-[#0d1520]">
+        <h3 class="mono text-[#00f5d4] text-sm font-bold tracking-widest mb-6">PROFICIENCY_MATRIX</h3>
+        <div class="space-y-5" id="skill-bars">
+          <div class="skill-item" data-pct="90">
+            <div class="flex justify-between mb-2">
+              <span class="mono text-xs text-[#c8d8e8] tracking-wider">Python</span>
+              <span class="mono text-xs text-[#00f5d4]">90%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item" data-pct="80">
+            <div class="flex justify-between mb-2">
+              <span class="mono text-xs text-[#c8d8e8] tracking-wider">Machine Learning</span>
+              <span class="mono text-xs text-[#00f5d4]">80%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item" data-pct="78">
+            <div class="flex justify-between mb-2">
+              <span class="mono text-xs text-[#c8d8e8] tracking-wider">AWS Cloud</span>
+              <span class="mono text-xs text-[#00f5d4]">78%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item" data-pct="82">
+            <div class="flex justify-between mb-2">
+              <span class="mono text-xs text-[#c8d8e8] tracking-wider">Backend Dev</span>
+              <span class="mono text-xs text-[#00f5d4]">82%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item" data-pct="75">
+            <div class="flex justify-between mb-2">
+              <span class="mono text-xs text-[#c8d8e8] tracking-wider">Docker / Linux</span>
+              <span class="mono text-xs text-[#00f5d4]">75%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item" data-pct="70">
+            <div class="flex justify-between mb-2">
+              <span class="mono text-xs text-[#c8d8e8] tracking-wider">Web Development</span>
+              <span class="mono text-xs text-[#00f5d4]">70%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Qualities -->
+      <div class="cyber-border rounded-lg p-6 bg-[#0d1520]">
+        <h3 class="mono text-[#00f5d4] text-sm font-bold tracking-widest mb-6">QUALITY_ATTRIBUTES</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4 p-3 rounded bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.08)]">
+            <span class="text-2xl">🎯</span>
+            <div>
+              <div class="mono text-xs text-[#b8ff57] font-bold tracking-wider mb-1">PROBLEM SOLVER</div>
+              <p class="text-xs text-[#7a9bb5] leading-relaxed">Strong analytical mindset with a focus on real-world, impactful solutions.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-3 rounded bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.08)]">
+            <span class="text-2xl">🤝</span>
+            <div>
+              <div class="mono text-xs text-[#b8ff57] font-bold tracking-wider mb-1">TEAM PLAYER</div>
+              <p class="text-xs text-[#7a9bb5] leading-relaxed">Effective communicator and collaborator in cross-functional environments.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-3 rounded bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.08)]">
+            <span class="text-2xl">📈</span>
+            <div>
+              <div class="mono text-xs text-[#b8ff57] font-bold tracking-wider mb-1">CONTINUOUS LEARNER</div>
+              <p class="text-xs text-[#7a9bb5] leading-relaxed">Always upskilling — from advanced prompting to distributed systems.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-3 rounded bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.08)]">
+            <span class="text-2xl">🏗️</span>
+            <div>
+              <div class="mono text-xs text-[#b8ff57] font-bold tracking-wider mb-1">SYSTEMS THINKER</div>
+              <p class="text-xs text-[#7a9bb5] leading-relaxed">Designs for reliability, scalability, and maintainability from day one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-28 relative">
+  <div class="absolute inset-0 bg-[rgba(0,245,212,0.01)] pointer-events-none"></div>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="section-line">
+      <span class="mono text-xs text-[#00f5d4] tracking-widest">03_PROJECTS</span>
+      <h2 class="text-3xl font-extrabold text-white">Featured Work</h2>
+    </div>
+
+    <!-- CivicOps Card — Full-width with Interactive Demo -->
+    <div class="cyber-border rounded-xl overflow-hidden bg-[#0d1520] mb-8">
+      <!-- Header -->
+      <div class="bg-[#0a1219] border-b border-[rgba(0,245,212,0.1)] px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-[rgba(0,245,212,0.1)] border border-[rgba(0,245,212,0.2)] flex items-center justify-center">
+            <span class="text-lg">🏙️</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">CivicOps</h3>
+            <p class="mono text-xs text-[#7a9bb5] tracking-wider">Civic Issue Reporting & Resolution System</p>
+          </div>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <span class="mono text-[10px] px-3 py-1 rounded bg-[rgba(0,245,212,0.08)] text-[#00f5d4] border border-[rgba(0,245,212,0.2)]">MOBILE-FIRST</span>
+          <span class="mono text-[10px] px-3 py-1 rounded bg-[rgba(184,255,87,0.08)] text-[#b8ff57] border border-[rgba(184,255,87,0.2)]">GEO-TAGGED</span>
+          <span class="mono text-[10px] px-3 py-1 rounded bg-[rgba(255,107,53,0.08)] text-[#ff6b35] border border-[rgba(255,107,53,0.2)]">REAL-TIME</span>
+        </div>
+      </div>
+
+      <!-- Interactive Demo -->
+      <div class="grid lg:grid-cols-3 gap-0 min-h-[500px]">
+
+        <!-- Left Panel: Issue List -->
+        <div class="border-r border-[rgba(0,245,212,0.1)] p-5 overflow-y-auto max-h-[500px]">
+          <div class="flex items-center justify-between mb-4">
+            <span class="mono text-xs text-[#00f5d4] tracking-wider font-bold">REPORTED ISSUES</span>
+            <span class="mono text-[10px] text-[#7a9bb5]" id="issue-count">8 active</span>
+          </div>
+
+          <!-- Search -->
+          <div class="relative mb-4">
+            <input type="text" placeholder="Search issues..." 
+              class="w-full bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.15)] rounded px-3 py-2 mono text-xs text-[#c8d8e8] placeholder-[#7a9bb5] focus:outline-none focus:border-[rgba(0,245,212,0.5)] transition-colors"
+              id="search-input"
+            />
+          </div>
+
+          <div class="space-y-3" id="issue-list"></div>
+        </div>
+
+        <!-- Center: Map Simulation -->
+        <div class="border-r border-[rgba(0,245,212,0.1)] relative bg-[#090f18] overflow-hidden">
+          <div class="absolute inset-0 opacity-20"
+            style="background-image: linear-gradient(rgba(0,245,212,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,212,0.1) 1px,transparent 1px); background-size:32px 32px;">
+          </div>
+          <!-- Street lines -->
+          <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 300 400" preserveAspectRatio="none">
+            <line x1="0" y1="150" x2="300" y2="150" stroke="#00f5d4" stroke-width="2"/>
+            <line x1="0" y1="280" x2="300" y2="280" stroke="#00f5d4" stroke-width="1"/>
+            <line x1="100" y1="0" x2="100" y2="400" stroke="#00f5d4" stroke-width="2"/>
+            <line x1="220" y1="0" x2="220" y2="400" stroke="#00f5d4" stroke-width="1"/>
+            <rect x="110" y="0" width="110" height="145" fill="rgba(0,245,212,0.04)" rx="2"/>
+            <rect x="0" y="160" width="90" height="115" fill="rgba(0,245,212,0.04)" rx="2"/>
+            <rect x="110" y="160" width="100" height="115" fill="rgba(184,255,87,0.02)" rx="2"/>
+            <rect x="230" y="160" width="70" height="115" fill="rgba(0,245,212,0.04)" rx="2"/>
+          </svg>
+          <!-- City label -->
+          <div class="absolute top-3 left-3 mono text-[10px] text-[#7a9bb5] tracking-wider">📍 LUCKNOW, UP</div>
+          <div class="absolute top-3 right-3 mono text-[10px] text-[#00f5d4] tracking-wider" id="map-live">◉ LIVE</div>
+
+          <!-- Markers -->
+          <div id="map-markers" class="absolute inset-0"></div>
+
+          <!-- Legend -->
+          <div class="absolute bottom-3 left-3 space-y-1">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-[#ff6b35]"></div>
+              <span class="mono text-[9px] text-[#7a9bb5]">OPEN</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-[#b8ff57]"></div>
+              <span class="mono text-[9px] text-[#7a9bb5]">IN PROGRESS</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-[#00f5d4]"></div>
+              <span class="mono text-[9px] text-[#7a9bb5]">RESOLVED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Issue Detail + Admin -->
+        <div class="p-5 flex flex-col" id="detail-panel">
+          <div class="mono text-xs text-[#00f5d4] tracking-wider font-bold mb-4">ISSUE DETAIL</div>
+          <div id="issue-detail" class="flex-1">
+            <div class="h-full flex flex-col items-center justify-center text-center gap-4 opacity-40">
+              <span class="text-4xl">🗺️</span>
+              <p class="mono text-xs text-[#7a9bb5] tracking-wider">SELECT AN ISSUE TO VIEW DETAILS</p>
+            </div>
+          </div>
+          <!-- Report form mini -->
+          <div class="mt-4 border-t border-[rgba(0,245,212,0.1)] pt-4">
+            <p class="mono text-[10px] text-[#7a9bb5] tracking-widest mb-3">SUBMIT NEW REPORT</p>
+            <div class="space-y-2">
+              <input type="text" id="new-issue-title" placeholder="Issue title..." class="w-full bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.15)] rounded px-3 py-2 mono text-xs text-[#c8d8e8] placeholder-[#7a9bb5] focus:outline-none focus:border-[rgba(0,245,212,0.5)] transition-colors"/>
+              <select id="new-issue-cat" class="w-full bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.15)] rounded px-3 py-2 mono text-xs text-[#c8d8e8] focus:outline-none focus:border-[rgba(0,245,212,0.5)] transition-colors">
+                <option value="" class="bg-[#0d1520]">Category...</option>
+                <option value="🛣️ Road" class="bg-[#0d1520]">🛣️ Road</option>
+                <option value="💡 Power" class="bg-[#0d1520]">💡 Power</option>
+                <option value="💧 Water" class="bg-[#0d1520]">💧 Water</option>
+                <option value="🗑️ Waste" class="bg-[#0d1520]">🗑️ Waste</option>
+              </select>
+              <button onclick="submitNewIssue()" class="w-full neon-btn py-2 rounded mono text-xs tracking-widest font-bold"><span>+ SUBMIT REPORT</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats footer -->
+      <div class="bg-[#0a1219] border-t border-[rgba(0,245,212,0.1)] px-6 py-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="text-center">
+          <div class="mono text-lg font-black text-[#ff6b35]" id="stat-open">3</div>
+          <div class="mono text-[10px] text-[#7a9bb5] tracking-wider">OPEN</div>
+        </div>
+        <div class="text-center">
+          <div class="mono text-lg font-black text-[#b8ff57]" id="stat-progress">3</div>
+          <div class="mono text-[10px] text-[#7a9bb5] tracking-wider">IN PROGRESS</div>
+        </div>
+        <div class="text-center">
+          <div class="mono text-lg font-black text-[#00f5d4]" id="stat-resolved">2</div>
+          <div class="mono text-[10px] text-[#7a9bb5] tracking-wider">RESOLVED</div>
+        </div>
+        <div class="text-center">
+          <div class="mono text-lg font-black text-white">↑87%</div>
+          <div class="mono text-[10px] text-[#7a9bb5] tracking-wider">RESOLUTION RATE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech used in project -->
+    <div class="flex flex-wrap gap-2 mt-4 mb-8">
+      <span class="mono text-[10px] text-[#7a9bb5] tracking-wider mr-2 self-center">BUILT WITH:</span>
+      <span class="mono text-[10px] px-3 py-1.5 rounded bg-[#0d1520] text-[#c8d8e8] border border-[rgba(255,255,255,0.1)]">Python</span>
+      <span class="mono text-[10px] px-3 py-1.5 rounded bg-[#0d1520] text-[#c8d8e8] border border-[rgba(255,255,255,0.1)]">REST APIs</span>
+      <span class="mono text-[10px] px-3 py-1.5 rounded bg-[#0d1520] text-[#c8d8e8] border border-[rgba(255,255,255,0.1)]">Geo-tagging</span>
+      <span class="mono text-[10px] px-3 py-1.5 rounded bg-[#0d1520] text-[#c8d8e8] border border-[rgba(255,255,255,0.1)]">Real-time Tracking</span>
+      <span class="mono text-[10px] px-3 py-1.5 rounded bg-[#0d1520] text-[#c8d8e8] border border-[rgba(255,255,255,0.1)]">Admin Dashboard</span>
+      <span class="mono text-[10px] px-3 py-1.5 rounded bg-[#0d1520] text-[#c8d8e8] border border-[rgba(255,255,255,0.1)]">Auto-routing</span>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="py-20 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="section-line">
+      <span class="mono text-xs text-[#00f5d4] tracking-widest">04_EDUCATION</span>
+      <h2 class="text-3xl font-extrabold text-white">Academic Path</h2>
+    </div>
+
+    <div class="max-w-2xl space-y-8">
+      <div class="timeline-item pb-8">
+        <div class="cyber-border rounded-lg p-5 bg-[#0d1520] ml-4">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+            <div>
+              <h3 class="font-bold text-white text-lg">B.Tech — Computer Science Engineering</h3>
+              <p class="mono text-xs text-[#b8ff57] tracking-wider">AI & DATA SCIENCE SPECIALIZATION</p>
+            </div>
+            <span class="mono text-xs text-[#00f5d4] bg-[rgba(0,245,212,0.08)] px-3 py-1 rounded border border-[rgba(0,245,212,0.2)]">2023 → 2027</span>
+          </div>
+          <p class="text-sm text-[#7a9bb5]">Khwaja Moinuddin Chishti Language University, Lucknow</p>
+        </div>
+      </div>
+      <div class="timeline-item pb-8">
+        <div class="cyber-border rounded-lg p-5 bg-[#0d1520] ml-4">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+            <div>
+              <h3 class="font-bold text-white text-lg">Senior Secondary (XII)</h3>
+              <p class="mono text-xs text-[#b8ff57] tracking-wider">SCIENCE · PCM</p>
+            </div>
+            <span class="mono text-xs text-[#00f5d4] bg-[rgba(0,245,212,0.08)] px-3 py-1 rounded border border-[rgba(0,245,212,0.2)]">2022</span>
+          </div>
+          <p class="text-sm text-[#7a9bb5]">GS Science Academy, Prayagraj</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="cyber-border rounded-lg p-5 bg-[#0d1520] ml-4">
+          <div class="flex flex-wrap items-start justify-between gap-3 mb-2">
+            <div>
+              <h3 class="font-bold text-white text-lg">High School (X)</h3>
+            </div>
+            <span class="mono text-xs text-[#00f5d4] bg-[rgba(0,245,212,0.08)] px-3 py-1 rounded border border-[rgba(0,245,212,0.2)]">2020</span>
+          </div>
+          <p class="text-sm text-[#7a9bb5]">GS Science Academy, Prayagraj</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="py-20 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="section-line">
+      <span class="mono text-xs text-[#00f5d4] tracking-widest">05_CERTIFICATIONS</span>
+      <h2 class="text-3xl font-extrabold text-white">Credentials</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl">
+      <div class="tech-card rounded-xl p-6 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[rgba(255,107,53,0.1)] border border-[rgba(255,107,53,0.2)] flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
+            🏅
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-1">DOSS Technical Training Program</h3>
+            <p class="mono text-xs text-[#ff6b35] tracking-wider mb-2">DHEX MEDIATECH PVT. LTD.</p>
+            <p class="mono text-[10px] text-[#7a9bb5]">Issued: December 14, 2024</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-[rgba(0,245,212,0.08)]">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-[#00f5d4] animate-pulse"></div>
+            <span class="mono text-[10px] text-[#00f5d4] tracking-wider">VERIFIED</span>
+          </div>
+        </div>
+      </div>
+      <div class="tech-card rounded-xl p-6 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[rgba(184,255,87,0.1)] border border-[rgba(184,255,87,0.2)] flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
+            🎓
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-1">Advanced Prompt Engineering</h3>
+            <p class="mono text-xs text-[#b8ff57] tracking-wider mb-2">FACULTY OF ENGG. & TECH. · KMCLU</p>
+            <p class="mono text-[10px] text-[#7a9bb5]">Issued: January 18, 2024</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-[rgba(0,245,212,0.08)]">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-[#00f5d4] animate-pulse"></div>
+            <span class="mono text-[10px] text-[#00f5d4] tracking-wider">VERIFIED</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-28 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="section-line">
+      <span class="mono text-xs text-[#00f5d4] tracking-widest">06_CONTACT</span>
+      <h2 class="text-3xl font-extrabold text-white">Get In Touch</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <div>
+        <p class="text-[#7a9bb5] text-lg leading-relaxed mb-8">
+          Looking for collaborations, internships, or interesting projects. Let's build something great together.
+        </p>
+        <div class="space-y-4">
+          <a href="mailto:dwivedi.abhijeet1301@gmail.com" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 rounded-lg bg-[rgba(0,245,212,0.1)] border border-[rgba(0,245,212,0.2)] flex items-center justify-center text-sm group-hover:bg-[rgba(0,245,212,0.2)] transition-colors">📧</div>
+            <div>
+              <div class="mono text-[10px] text-[#7a9bb5] tracking-wider mb-0.5">EMAIL</div>
+              <div class="mono text-sm text-[#c8d8e8] group-hover:text-[#00f5d4] transition-colors">dwivedi.abhijeet1301@gmail.com</div>
+            </div>
+          </a>
+          <a href="tel:7800361582" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 rounded-lg bg-[rgba(0,245,212,0.1)] border border-[rgba(0,245,212,0.2)] flex items-center justify-center text-sm group-hover:bg-[rgba(0,245,212,0.2)] transition-colors">📱</div>
+            <div>
+              <div class="mono text-[10px] text-[#7a9bb5] tracking-wider mb-0.5">PHONE</div>
+              <div class="mono text-sm text-[#c8d8e8] group-hover:text-[#00f5d4] transition-colors">+91 7800361582</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/dwivediabhijeet" target="_blank" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 rounded-lg bg-[rgba(0,245,212,0.1)] border border-[rgba(0,245,212,0.2)] flex items-center justify-center text-sm group-hover:bg-[rgba(0,245,212,0.2)] transition-colors">💼</div>
+            <div>
+              <div class="mono text-[10px] text-[#7a9bb5] tracking-wider mb-0.5">LINKEDIN</div>
+              <div class="mono text-sm text-[#c8d8e8] group-hover:text-[#00f5d4] transition-colors">linkedin.com/in/dwivediabhijeet</div>
+            </div>
+          </a>
+          <a href="https://github.com/abhijeet02323" target="_blank" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 rounded-lg bg-[rgba(0,245,212,0.1)] border border-[rgba(0,245,212,0.2)] flex items-center justify-center text-sm group-hover:bg-[rgba(0,245,212,0.2)] transition-colors">🐙</div>
+            <div>
+              <div class="mono text-[10px] text-[#7a9bb5] tracking-wider mb-0.5">GITHUB</div>
+              <div class="mono text-sm text-[#c8d8e8] group-hover:text-[#00f5d4] transition-colors">github.com/abhijeet02323</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="cyber-border rounded-lg p-6 bg-[#0d1520]">
+        <h3 class="mono text-[#00f5d4] text-xs tracking-widest font-bold mb-5">QUICK MESSAGE</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="mono text-[10px] text-[#7a9bb5] tracking-wider block mb-1.5">NAME</label>
+            <input type="text" class="w-full bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.15)] rounded px-4 py-2.5 mono text-sm text-[#c8d8e8] placeholder-[#7a9bb5] focus:outline-none focus:border-[rgba(0,245,212,0.5)] transition-colors" placeholder="Your name"/>
+          </div>
+          <div>
+            <label class="mono text-[10px] text-[#7a9bb5] tracking-wider block mb-1.5">EMAIL</label>
+            <input type="email" class="w-full bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.15)] rounded px-4 py-2.5 mono text-sm text-[#c8d8e8] placeholder-[#7a9bb5] focus:outline-none focus:border-[rgba(0,245,212,0.5)] transition-colors" placeholder="your@email.com"/>
+          </div>
+          <div>
+            <label class="mono text-[10px] text-[#7a9bb5] tracking-wider block mb-1.5">MESSAGE</label>
+            <textarea rows="4" class="w-full bg-[rgba(0,245,212,0.04)] border border-[rgba(0,245,212,0.15)] rounded px-4 py-2.5 mono text-sm text-[#c8d8e8] placeholder-[#7a9bb5] focus:outline-none focus:border-[rgba(0,245,212,0.5)] transition-colors resize-none" placeholder="What's on your mind..."></textarea>
+          </div>
+          <button onclick="sendMsg(this)" class="w-full neon-btn py-3 rounded mono text-sm tracking-widest font-bold"><span>SEND MESSAGE →</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-[rgba(0,245,212,0.1)] py-8">
+  <div class="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
+    <div class="mono text-xs text-[#7a9bb5] tracking-wider">
+      © 2025 ABHIJEET DWIVEDI · BUILT WITH <span class="text-[#00f5d4]">❤</span> & CODE
+    </div>
+    <div class="mono text-xs text-[#7a9bb5] tracking-wider">
+      LUCKNOW, UP · INDIA
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const issues = [
+  { id:'C001', title:'Pothole on Hazratganj Rd', cat:'🛣️ Road', status:'open', x:32, y:38, desc:'Large pothole causing traffic obstruction near intersection. Risk of vehicle damage.', reported:'2h ago', votes:12 },
+  { id:'C002', title:'Street light outage', cat:'💡 Power', status:'progress', x:65, y:28, desc:'3 consecutive street lights non-functional on MG Road stretch, unsafe at night.', reported:'5h ago', votes:8 },
+  { id:'C003', title:'Water main leak', cat:'💧 Water', status:'open', x:48, y:62, desc:'Significant water leakage detected causing road flooding near Gomti Nagar.', reported:'1h ago', votes:21 },
+  { id:'C004', title:'Garbage overflow', cat:'🗑️ Waste', status:'resolved', x:22, y:70, desc:'Bins overflowing near market area. Sanitation team dispatched and resolved.', reported:'1d ago', votes:5 },
+  { id:'C005', title:'Road crack — Alambagh', cat:'🛣️ Road', status:'progress', x:78, y:55, desc:'Large crack spanning full lane width posing safety hazard for two-wheelers.', reported:'8h ago', votes:15 },
+  { id:'C006', title:'Broken footpath', cat:'🛣️ Road', status:'open', x:55, y:18, desc:'Broken tiles on footpath near Charbagh station causing injury risk to pedestrians.', reported:'3h ago', votes:9 },
+  { id:'C007', title:'Power cut — Sector 14', cat:'💡 Power', status:'progress', x:18, y:45, desc:'Recurring power outages in residential sector. Affects approx 200 households.', reported:'4h ago', votes:34 },
+  { id:'C008', title:'Storm drain blocked', cat:'💧 Water', status:'resolved', x:88, y:75, desc:'Blocked drain causing flooding. Issue resolved by municipal team. Closed.', reported:'2d ago', votes:7 },
+];
+
+// ─── TERMINAL ANIMATION ──────────────────────────────────────────────────────
+const lines = [
+  { text: '$ whoami', color: '#c8d8e8', delay: 200 },
+  { text: 'abhijeet_dwivedi', color: '#00f5d4', delay: 600 },
+  { text: '$ cat skills.txt', color: '#c8d8e8', delay: 1000 },
+  { text: '> Python, AWS, ML, Docker, Linux', color: '#b8ff57', delay: 1400 },
+  { text: '> Backend Dev, REST APIs, Git', color: '#b8ff57', delay: 1700 },
+  { text: '$ location', color: '#c8d8e8', delay: 2100 },
+  { text: '📍 Lucknow, Uttar Pradesh, IN', color: '#ff6b35', delay: 2500 },
+  { text: '$ status', color: '#c8d8e8', delay: 2900 },
+  { text: '🟢 Open to opportunities', color: '#00f5d4', delay: 3300 },
+];
+
+const terminal = document.getElementById('terminal-output');
+lines.forEach(({ text, color, delay }) => {
+  setTimeout(() => {
+    const el = document.createElement('div');
+    el.className = 'mono text-xs';
+    el.style.color = color;
+    el.textContent = text;
+    el.style.animation = 'fadeUp 0.3s ease forwards';
+    terminal.appendChild(el);
+    terminal.scrollTop = terminal.scrollHeight;
+  }, delay);
+});
+
+// ─── PARTICLES ───────────────────────────────────────────────────────────────
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+resize(); window.addEventListener('resize', resize);
+const particles = Array.from({length:50}, () => ({
+  x: Math.random(), y: Math.random(),
+  vx: (Math.random()-0.5)*0.0003, vy: (Math.random()-0.5)*0.0003,
+  size: Math.random()*2+0.5, opacity: Math.random()*0.5+0.1
+}));
+function drawParticles() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p => {
+    p.x = (p.x+p.vx+1)%1; p.y = (p.y+p.vy+1)%1;
+    ctx.beginPath();
+    ctx.arc(p.x*canvas.width, p.y*canvas.height, p.size, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(0,245,212,${p.opacity})`;
+    ctx.fill();
+  });
+  // Connect nearby
+  for(let i=0;i<particles.length;i++) {
+    for(let j=i+1;j<particles.length;j++) {
+      const dx=(particles[i].x-particles[j].x)*canvas.width;
+      const dy=(particles[i].y-particles[j].y)*canvas.height;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<80) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x*canvas.width,particles[i].y*canvas.height);
+        ctx.lineTo(particles[j].x*canvas.width,particles[j].y*canvas.height);
+        ctx.strokeStyle=`rgba(0,245,212,${0.08*(1-d/80)})`;
+        ctx.lineWidth=0.5;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ─── SKILL BARS ───────────────────────────────────────────────────────────────
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.skill-item').forEach(item => {
+        const pct = item.dataset.pct;
+        item.querySelector('.skill-fill').style.width = pct + '%';
+      });
+    }
+  });
+}, { threshold: 0.3 });
+skillObserver.observe(document.getElementById('skill-bars'));
+
+// ─── CIVICOPS ─────────────────────────────────────────────────────────────────
+let selectedIssue = null;
+const statusColors = { open:'#ff6b35', progress:'#b8ff57', resolved:'#00f5d4' };
+
+function renderIssues(list) {
+  const el = document.getElementById('issue-list');
+  el.innerHTML = '';
+  list.forEach(issue => {
+    const div = document.createElement('div');
+    div.className = `issue-card${selectedIssue?.id === issue.id ? ' selected' : ''}`;
+    div.innerHTML = `
+      <div class="flex items-start justify-between gap-2 mb-2">
+        <div>
+          <div class="mono text-[10px] text-[#7a9bb5] tracking-wider mb-1">${issue.id} · ${issue.cat}</div>
+          <div class="text-xs font-semibold text-white leading-tight">${issue.title}</div>
+        </div>
+        <div class="status-badge status-${issue.status} shrink-0">
+          <span class="dot"></span>${issue.status.toUpperCase().replace('PROGRESS','IN PROG')}
+        </div>
+      </div>
+      <div class="flex items-center gap-3 mono text-[10px] text-[#7a9bb5]">
+        <span>⏱ ${issue.reported}</span>
+        <span>▲ ${issue.votes}</span>
+      </div>
+    `;
+    div.onclick = () => selectIssue(issue);
+    el.appendChild(div);
+  });
+}
+
+function renderMarkers() {
+  const map = document.getElementById('map-markers');
+  map.innerHTML = '';
+  issues.forEach(issue => {
+    const m = document.createElement('div');
+    m.className = 'map-marker';
+    m.style.left = issue.x + '%';
+    m.style.top = issue.y + '%';
+    m.style.background = statusColors[issue.status];
+    m.style.color = statusColors[issue.status];
+    m.title = issue.title;
+    m.onclick = () => selectIssue(issue);
+    map.appendChild(m);
+  });
+}
+
+function selectIssue(issue) {
+  selectedIssue = issue;
+  renderIssues(getFilteredIssues());
+  const detail = document.getElementById('issue-detail');
+  detail.innerHTML = `
+    <div class="space-y-4">
+      <div class="flex items-start justify-between gap-3 flex-wrap">
+        <div>
+          <div class="mono text-[10px] text-[#7a9bb5] tracking-wider mb-1">${issue.id}</div>
+          <h4 class="font-bold text-white text-base">${issue.title}</h4>
+        </div>
+        <div class="status-badge status-${issue.status}"><span class="dot"></span>${issue.status.toUpperCase().replace('PROGRESS','IN PROGRESS')}</div>
+      </div>
+      <p class="text-xs text-[#7a9bb5] leading-relaxed">${issue.desc}</p>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-[rgba(0,245,212,0.04)] rounded p-3 border border-[rgba(0,245,212,0.1)]">
+          <div class="mono text-[9px] text-[#7a9bb5] tracking-wider mb-1">CATEGORY</div>
+          <div class="mono text-xs text-white">${issue.cat}</div>
+        </div>
+        <div class="bg-[rgba(0,245,212,0.04)] rounded p-3 border border-[rgba(0,245,212,0.1)]">
+          <div class="mono text-[9px] text-[#7a9bb5] tracking-wider mb-1">REPORTED</div>
+          <div class="mono text-xs text-white">${issue.reported}</div>
+        </div>
+        <div class="bg-[rgba(0,245,212,0.04)] rounded p-3 border border-[rgba(0,245,212,0.1)]">
+          <div class="mono text-[9px] text-[#7a9bb5] tracking-wider mb-1">UPVOTES</div>
+          <div class="mono text-xs text-[#b8ff57] font-bold">▲ ${issue.votes}</div>
+        </div>
+        <div class="bg-[rgba(0,245,212,0.04)] rounded p-3 border border-[rgba(0,245,212,0.1)]">
+          <div class="mono text-[9px] text-[#7a9bb5] tracking-wider mb-1">LOCATION</div>
+          <div class="mono text-xs text-white">${issue.x.toFixed(2)}°N ${issue.y.toFixed(2)}°E</div>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="changeStatus('${issue.id}','progress')" class="flex-1 mono text-[10px] py-2 rounded border border-[rgba(184,255,87,0.3)] text-[#b8ff57] hover:bg-[rgba(184,255,87,0.1)] transition-colors">▶ SET IN PROGRESS</button>
+        <button onclick="changeStatus('${issue.id}','resolved')" class="flex-1 mono text-[10px] py-2 rounded border border-[rgba(0,245,212,0.3)] text-[#00f5d4] hover:bg-[rgba(0,245,212,0.1)] transition-colors">✓ RESOLVE</button>
+      </div>
+    </div>
+  `;
+}
+
+function changeStatus(id, newStatus) {
+  const issue = issues.find(i => i.id === id);
+  if (issue) {
+    issue.status = newStatus;
+    updateStats();
+    renderMarkers();
+    selectIssue(issue);
+  }
+}
+
+function updateStats() {
+  document.getElementById('stat-open').textContent = issues.filter(i=>i.status==='open').length;
+  document.getElementById('stat-progress').textContent = issues.filter(i=>i.status==='progress').length;
+  document.getElementById('stat-resolved').textContent = issues.filter(i=>i.status==='resolved').length;
+}
+
+function getFilteredIssues() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  return issues.filter(i => i.title.toLowerCase().includes(q) || i.cat.toLowerCase().includes(q));
+}
+
+document.getElementById('search-input').addEventListener('input', () => {
+  renderIssues(getFilteredIssues());
+  document.getElementById('issue-count').textContent = getFilteredIssues().length + ' active';
+});
+
+function submitNewIssue() {
+  const title = document.getElementById('new-issue-title').value.trim();
+  const cat = document.getElementById('new-issue-cat').value;
+  if (!title || !cat) return;
+  const id = 'C00' + (issues.length+1);
+  issues.push({ id, title, cat, status:'open', x:Math.random()*80+10, y:Math.random()*70+10, desc:'New issue submitted via CivicOps platform. Pending admin review.', reported:'just now', votes:1 });
+  document.getElementById('new-issue-title').value = '';
+  document.getElementById('new-issue-cat').value = '';
+  updateStats();
+  renderMarkers();
+  renderIssues(getFilteredIssues());
+  document.getElementById('issue-count').textContent = getFilteredIssues().length + ' active';
+}
+
+// Live ping animation
+setInterval(() => {
+  const el = document.getElementById('map-live');
+  if (el) el.style.opacity = el.style.opacity === '0.3' ? '1' : '0.3';
+}, 800);
+
+// Init
+renderIssues(issues);
+renderMarkers();
+
+// ─── CONTACT ──────────────────────────────────────────────────────────────────
+function sendMsg(btn) {
+  const span = btn.querySelector('span');
+  span.textContent = 'MESSAGE SENT ✓';
+  btn.style.borderColor = '#b8ff57';
+  btn.style.color = '#b8ff57';
+  setTimeout(() => { span.textContent = 'SEND MESSAGE →'; btn.style.borderColor = ''; btn.style.color = ''; }, 3000);
+}
+
+// ─── MOBILE MENU ─────────────────────────────────────────────────────────────
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('open');
+}
+
+// ─── SCROLL ANIMATIONS ───────────────────────────────────────────────────────
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      e.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.tech-card, .timeline-item .cyber-border').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  fadeObserver.observe(el);
+});
+</script>
+</body>
+</html>

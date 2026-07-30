@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="script.js"></script>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#techs">Tech-Stacks</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Spacer to prevent content overlap -->
+    <div class="spacer"></div>
+
+    <!-- About Section -->
+<section id="about">
+        <div class="about-container">
+            <!-- Left Side: Photo -->
+            <div class="photo-container">
+                <img src="images/abhijeet.png" alt="Abhijeet Dwivedi" class="profile-photo">
+            </div>
+
+            <!-- Right Side: About Text -->
+            <div class="about-text">
+                <h1>This is Abhijeet Dwivedi</h1>
+                <p>Hello! I'm a passionate developer spending most of my time in Linux terminals, exploring AI, Machine Learning, and Web Development. I love creating projects that solve real problems and enhance user experience. Welcome to my personal portfolio!</p>
+            </div>
+        </div>
+</section>
+
+     <!-- Tech Section -->
+<section id="techs">
+    <div class="tech-container">
+        <h1 class="tech-title">Technologies I Use</h1>
+        <div class="tech-grid">
+            
+            <!-- Frontend -->
+            <div class="tech-card">
+                <h2>Frontend</h2>
+                <div class="tech-icons">
+                    <style>display::view-transition-group</style>
+                    </style>
+                        
+                    <div class="tech-item">
+                        <img src="images/html.png" width=70 alt="HTML5">
+                        <img src="images/css.png" width=70 alt="CSS3"><br>
+                        <img src="images/js.png" width=70 alt="JavaScript">
+                        <img src="images/react.png" width=70 alt="React.js">
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="tech-card">
+                <h2>Backend</h2>
+                <div class="tech-icons">
+                    <style>
+                         img {
+                            margin: 10px;
+                        }
+                    </style>
+                    <div class="tech-item">
+                        <img src="images/python.png" width=70 alt="Node.js">
+                        <img src="images/bash.png" width=70 alt="Bash"><br>
+                        <img src="images/C.png" width=70 alt="Python">
+                        <img src="images/go.png" width=80 alt="Go"><br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database -->
+            <div class="tech-card">
+                <h2>Database</h2>
+                <div class="tech-icons">
+                    <div class="tech-item">
+                        <img src="images/mysql.png" width="80  alt="MySQL">
+                    </div>
+                    <div class="tech-item">
+                        <img src="images/mongodb.png" width="80" alt="MongoDB">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Deployment -->
+            <div class="tech-card">
+                <h2>Linux System</h2>
+                <div class="tech-icons">
+                    <div class="tech-item">
+                        <img src="images/arch.png" width=70 alt="Linux">
+                        <img src="images/git.png" width=70 alt="Linux"><br>
+                        <img src="images/hyprland.png" width=70 alt="Linux">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="tech-card">
+                <h2>Devops & Cloud</h2>
+                <div class="tech-icons">
+                    <div class="tech-item">
+                        <img src="images/aws.png" width=80 alt="aws">
+                         <img src="images/kubernetes.png" width=70 alt="kubernetes"><br>
+                        <img src="images/docker.png" width=190 alt="Docker">                 
+                    </div>
+                </div>
+                
+            </div>
+
+             <div class="tech-card">
+                <h2>Tools & Editors</h2>
+                <div class="tech-icons">
+                    <div class="tech-item">
+                        <img src="images/typst.png" width=70 alt="Typst">
+                         <img src="images/neovim.png" width=60 alt="Neovim"><br>
+                        <img src="images/figma.png" width=70 alt="Figma">  
+                        <img src="images/vscode.png" width=70 alt="VSCode"><br>
+                        <img src="images/obsidian.png" width=70 alt="Obsidian"> 
+                        <img src="images/canva.png" width=70 alt="Canva"><br>                  
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- Projects Section -->
+<section id="projects">
+
+    <h1 class="projects-title">Projects</h1>
+
+    <div class="projects-grid">
+
+        <a href="cloud.html" class="project-card">
+
+            <div class="project-title">
+                Cloud Log Monitoring
+                <span>↗</span>
+            </div>
+
+            <p class="project-description">
+                AWS-powered security monitoring application that
+                analyzes EC2 logs and detects suspicious SSH logins.
+            </p>
+
+            <div class="project-tech">
+                <span>Python</span>
+                <span>AWS</span>
+                <span>Boto3</span>
+                <span>Linux</span>
+            </div>
+
+        </a>
+
+        <a href="music.html" class="project-card">
+
+            <div class="project-title">
+                AI Music Player
+                <span>↗</span>
+            </div>
+
+            <p class="project-description">
+                Claude-powered music player capable of lyric explanation,
+                sentiment analysis, and multilingual understanding.
+            </p>
+
+            <div class="project-tech">
+                <span>Python</span>
+                <span>Claude AI</span>
+                <span>Flask</span>
+            </div>
+
+        </a>
+
+        <a href="civicops.html" class="project-card">
+
+            <div class="project-title">
+                CivicOps
+                <span>↗</span>
+            </div>
+
+            <p class="project-description">
+                Crowdsourced civic issue reporting platform with an
+                administration dashboard and live complaint tracking.
+            </p>
+
+            <div class="project-tech">
+                <span>Node.js</span>
+                <span>PostgreSQL</span>
+                <span>AWS S3</span>
+            </div>
+
+        </a>
+
+    </div>
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- Contact -->
+        <div class="footer-section">
+            <h3>Contact</h3>
+
+            <p>Email</p>
+            <a href="mailto:dwivedi.abhijeet1301@gmail.com">
+                dwivedi.abhijeet1301@gmail.com
+            </a>
+
+            <p>Phone</p>
+            <a href="tel:+917800361582">
+                +91 7800361582
+            </a>
+
+            <p>Location</p>
+            <span>Lucknow, Uttar Pradesh, India</span>
+        </div>
+
+        <!-- Important Links -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+
+            <a href="#about">About</a>
+            <a href="#techs">Technology</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <!-- Professional Links -->
+        <div class="footer-section">
+            <h3>Professional</h3>
+
+            <a href="https://github.com/abhijeet02323" target="_blank">
+                GitHub ↗
+            </a>
+
+            <a href="https://linkedin.com/in/dwivediabhijeet" target="_blank">
+                LinkedIn ↗
+            </a>
+
+            <a href="resume.pdf" target="_blank">
+                Resume ↗
+            </a>
+
+            <a href="mailto:dwivedi.abhijeet1301@gmail.com">
+                Hire Me
+            </a>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="footer-bottom">
+        © 2026 Abhijeet Dwivedi • Built with HTML, CSS & JavaScript
+    </div>
+</footer>
+</body>
+</html>
