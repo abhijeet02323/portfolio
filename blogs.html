@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs | Abhijeet Dwivedi</title>
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="blogs.css">
+
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+</head>
+
+<body>
+
+<!-- ========================= NAVBAR ========================= -->
+
+<nav>
+
+    <div class="logo">
+        <a href="index.html">← Portfolio</a>
+    </div>
+
+    <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#technology">Technology</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+    </ul>
+
+</nav>
+
+<!-- ========================= HERO ========================= -->
+
+<section class="hero">
+
+    <h1>Blogs & Articles</h1>
+
+    <p>
+        Notes, tutorials, research articles and documentation on
+        Artificial Intelligence, Cloud Computing, DevOps, Linux,
+        Python and Software Engineering.
+    </p>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search articles..."
+    >
+
+</section>
+
+<!-- ========================= FILTERS ========================= -->
+
+<section class="tags">
+
+    <button class="active">All</button>
+
+    <button>AWS</button>
+
+    <button>Linux</button>
+
+    <button>DevOps</button>
+
+    <button>Python</button>
+
+    <button>AI</button>
+
+    <button>Cloud</button>
+
+</section>
+
+<!-- ========================= BLOG GRID ========================= -->
+
+<section class="blogs-grid">
+
+    <!-- Card -->
+
+    <article class="blog-card"
+        data-file="blogs/Cloud Deployment Model.md">
+
+        <h2>AWS EC2 Complete Guide</h2>
+
+        <p>
+            Learn how to launch, configure and secure EC2
+            instances from scratch.
+        </p>
+
+        <div class="meta">
+
+            <span>AWS</span>
+
+            <span>Cloud</span>
+
+            <span>12 min read</span>
+
+        </div>
+
+    </article>
+
+    <!-- Card -->
+
+    <article class="blog-card"
+        data-file="blogs/docker.md">
+
+        <h2>Docker for Beginners</h2>
+
+        <p>
+            Everything about Docker images,
+            containers and deployment.
+        </p>
+
+        <div class="meta">
+
+            <span>Docker</span>
+
+            <span>DevOps</span>
+
+            <span>10 min read</span>
+
+        </div>
+
+    </article>
+
+    <!-- Card -->
+
+    <article class="blog-card"
+        data-file="blogs/kubernetes.md">
+
+        <h2>Kubernetes Fundamentals</h2>
+
+        <p>
+            Deploy, scale and manage containers
+            using Kubernetes.
+        </p>
+
+        <div class="meta">
+
+            <span>Kubernetes</span>
+
+            <span>Cloud</span>
+
+            <span>15 min read</span>
+
+        </div>
+
+    </article>
+
+    <!-- Card -->
+
+    <article class="blog-card"
+        data-file="blogs/linux.md">
+
+        <h2>Linux Commands Every Developer Should Know</h2>
+
+        <p>
+            Daily Linux commands useful for
+            developers and cloud engineers.
+        </p>
+
+        <div class="meta">
+
+            <span>Linux</span>
+
+            <span>Terminal</span>
+
+            <span>8 min read</span>
+
+        </div>
+
+    </article>
+
+    <!-- Card -->
+
+    <article class="blog-card"
+        data-file="blogs/cnn.md">
+
+        <h2>Understanding CNN</h2>
+
+        <p>
+            Introduction to Convolutional Neural Networks
+            and image classification.
+        </p>
+
+        <div class="meta">
+
+            <span>AI</span>
+
+            <span>Deep Learning</span>
+
+            <span>9 min read</span>
+
+        </div>
+
+    </article>
+
+    <!-- Card -->
+
+    <article class="blog-card"
+        data-file="blogs/devops-roadmap.md">
+
+        <h2>Complete DevOps Roadmap</h2>
+
+        <p>
+            Learn DevOps step by step from Linux
+            to Kubernetes.
+        </p>
+
+        <div class="meta">
+
+            <span>DevOps</span>
+
+            <span>Career</span>
+
+            <span>14 min read</span>
+
+        </div>
+
+    </article>
+
+    <!-- Card -->
+
+    <article class="blog-card"
+        data-file="blogs/python-best-practices.md">
+
+        <h2>Python Best Practices</h2>
+
+        <p>
+            Write cleaner and maintainable Python
+            applications.
+        </p>
+
+        <div class="meta">
+
+            <span>Python</span>
+
+            <span>Programming</span>
+
+            <span>7 min read</span>
+
+        </div>
+
+    </article>
+
+    <!-- Card -->
+
+    <article class="blog-card"
+        data-file="blogs/cloud-security.md">
+
+        <h2>Cloud Security Essentials</h2>
+
+        <p>
+            IAM, MFA, Encryption,
+            Monitoring and Cloud Security.
+        </p>
+
+        <div class="meta">
+
+            <span>AWS</span>
+
+            <span>Security</span>
+
+            <span>11 min read</span>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- ========================= BLOG READER ========================= -->
+
+<section id="reader">
+
+    <div class="reader-header">
+
+        <button id="closeReader">
+            ← Back to Articles
+        </button>
+
+        <div class="reading-progress">
+
+            <div id="progressBar"></div>
+
+        </div>
+
+    </div>
+
+    <article id="markdown-content">
+
+        <!-- Markdown Loaded Here -->
+
+    </article>
+
+</section>
+
+<!-- ========================= FOOTER ========================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>Keep Learning.</h2>
+
+        <p>
+            Sharing knowledge about AI,
+            Cloud Computing,
+            DevOps,
+            Linux and Software Development.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Portfolio
+            </a>
+
+            <a href="https://github.com/yourusername">
+                GitHub
+            </a>
+
+            <a href="https://linkedin.com/in/yourusername">
+                LinkedIn
+            </a>
+
+        </div>
+
+        <p>
+            © 2026 Abhijeet Dwivedi
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="blogs.js"></script>
+
+</body>
+</html>

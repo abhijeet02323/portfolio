@@ -1,0 +1,1620 @@
+/* ==========================================================
+   BLOGS.CSS
+   PART 1
+   Global • Navbar • Hero • Search • Filters • Blog Cards
+========================================================== */
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+
+    background:#121212;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#1a1a1a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00bcd4;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#00e5ff;
+}
+
+/* ==========================
+   LINKS
+========================== */
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    background:#000;
+
+    padding:18px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:999;
+
+    border-bottom:1px solid rgba(0,188,212,.25);
+
+}
+
+.logo a{
+
+    color:#00bcd4;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:35px;
+
+}
+
+nav ul li a{
+
+    color:#ffffff;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+nav ul li a:hover{
+
+    color:#00bcd4;
+
+}
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero{
+
+    padding-top:150px;
+
+    padding-bottom:70px;
+
+    text-align:center;
+
+    width:90%;
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+.hero h1{
+
+    font-size:56px;
+
+    color:#00bcd4;
+
+    margin-bottom:20px;
+
+    text-shadow:0 0 15px rgba(0,188,212,.5);
+
+}
+
+.hero p{
+
+    color:#cfcfcf;
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+/* ==========================================================
+   SEARCH BAR
+========================================================== */
+
+#search{
+
+    width:100%;
+
+    padding:18px 22px;
+
+    border-radius:12px;
+
+    border:2px solid #00bcd4;
+
+    background:#1d1d1d;
+
+    color:#fff;
+
+    font-size:17px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+#search::placeholder{
+
+    color:#888;
+
+}
+
+#search:focus{
+
+    box-shadow:0 0 20px rgba(0,188,212,.45);
+
+}
+
+/* ==========================================================
+   TAGS
+========================================================== */
+
+.tags{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:20px auto 60px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+.tags button{
+
+    background:#1e1e1e;
+
+    color:#ffffff;
+
+    border:2px solid #00bcd4;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:15px;
+
+}
+
+.tags button:hover{
+
+    background:#00bcd4;
+
+    color:#111;
+
+    transform:translateY(-3px);
+
+}
+
+.tags button.active{
+
+    background:#00bcd4;
+
+    color:#111;
+
+    font-weight:bold;
+
+}
+
+/* ==========================================================
+   BLOG GRID
+========================================================== */
+
+.blogs-grid{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:35px;
+
+    padding-bottom:80px;
+
+}
+
+/* ==========================================================
+   BLOG CARD
+========================================================== */
+
+.blog-card{
+
+    background:#1d1d1d;
+
+    border:2px solid rgba(0,188,212,.35);
+
+    border-radius:18px;
+
+    padding:28px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Animated Light Sweep */
+
+.blog-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:60%;
+
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+    transition:.8s;
+
+}
+
+.blog-card:hover::before{
+
+    left:150%;
+
+}
+
+/* Hover Effect */
+
+.blog-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 0 20px rgba(0,188,212,.6);
+
+    border-color:#00bcd4;
+
+}
+
+/* ==========================================================
+   BLOG TITLE
+========================================================== */
+
+.blog-card h2{
+
+    color:#00bcd4;
+
+    margin-bottom:18px;
+
+    font-size:28px;
+
+    transition:.3s;
+
+}
+
+.blog-card:hover h2{
+
+    letter-spacing:.5px;
+
+}
+
+/* ==========================================================
+   BLOG DESCRIPTION
+========================================================== */
+
+.blog-card p{
+
+    color:#cfcfcf;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+}
+
+/* ==========================================================
+   META
+========================================================== */
+
+.meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.meta span{
+
+    border:1px solid #00bcd4;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    color:#00bcd4;
+
+    font-size:13px;
+
+    transition:.3s;
+
+}
+
+.blog-card:hover .meta span{
+
+    background:#00bcd4;
+
+    color:#111;
+
+}
+
+/* ==========================================================
+   CARD ICON
+========================================================== */
+
+.blog-card::after{
+
+    content:"↗";
+
+    position:absolute;
+
+    right:22px;
+
+    top:22px;
+
+    font-size:26px;
+
+    color:#00bcd4;
+
+    transition:.3s;
+
+}
+
+.blog-card:hover::after{
+
+    transform:translate(5px,-5px);
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    .hero h1{
+
+        font-size:46px;
+
+    }
+
+    .hero p{
+
+        font-size:17px;
+
+    }
+
+    nav{
+
+        padding:18px 5%;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+    nav ul{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:20px;
+
+    }
+
+    .hero{
+
+        padding-top:180px;
+
+    }
+
+    .hero h1{
+
+        font-size:38px;
+
+    }
+
+    .blogs-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .blog-card{
+
+        padding:22px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .hero h1{
+
+        font-size:30px;
+
+    }
+
+    .hero p{
+
+        font-size:15px;
+
+    }
+
+    #search{
+
+        font-size:15px;
+
+        padding:15px;
+
+    }
+
+    .blog-card h2{
+
+        font-size:23px;
+
+    }
+
+}
+
+/* ==========================================================
+   BLOGS.CSS
+   PART 2
+   Markdown Reader • Typography • Code • Tables • Images
+========================================================== */
+
+/* ==========================================================
+   BLOG READER
+========================================================== */
+
+#reader{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:60px auto;
+
+    background:#1b1b1b;
+
+    border:2px solid rgba(0,188,212,.35);
+
+    border-radius:18px;
+
+    padding:40px;
+
+    display:none;
+
+    animation:fadeIn .4s ease;
+
+}
+
+#reader.active{
+
+    display:block;
+
+}
+
+/* ==========================================================
+   READER HEADER
+========================================================== */
+
+.reader-header{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    margin-bottom:35px;
+
+}
+
+#closeReader{
+
+    width:max-content;
+
+    padding:12px 22px;
+
+    background:#00bcd4;
+
+    color:#111;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+#closeReader:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 18px rgba(0,188,212,.6);
+
+}
+
+/* ==========================================================
+   READING PROGRESS BAR
+========================================================== */
+
+.reading-progress{
+
+    width:100%;
+
+    height:8px;
+
+    background:#2a2a2a;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+#progressBar{
+
+    width:0%;
+
+    height:100%;
+
+    background:#00bcd4;
+
+    transition:.2s;
+
+}
+
+/* ==========================================================
+   MARKDOWN CONTENT
+========================================================== */
+
+#markdown-content{
+
+    color:#e4e4e4;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+}
+
+/* ==========================================================
+   HEADINGS
+========================================================== */
+
+#markdown-content h1{
+
+    color:#00bcd4;
+
+    font-size:42px;
+
+    margin:20px 0;
+
+    border-bottom:2px solid rgba(0,188,212,.35);
+
+    padding-bottom:15px;
+
+}
+
+#markdown-content h2{
+
+    color:#00bcd4;
+
+    margin-top:45px;
+
+    margin-bottom:18px;
+
+    font-size:32px;
+
+}
+
+#markdown-content h3{
+
+    color:#00e5ff;
+
+    margin-top:35px;
+
+    margin-bottom:12px;
+
+    font-size:25px;
+
+}
+
+#markdown-content h4{
+
+    color:#ffffff;
+
+    margin-top:30px;
+
+    font-size:21px;
+
+}
+
+/* ==========================================================
+   PARAGRAPHS
+========================================================== */
+
+#markdown-content p{
+
+    margin:18px 0;
+
+    color:#d7d7d7;
+
+}
+
+/* ==========================================================
+   LINKS
+========================================================== */
+
+#markdown-content a{
+
+    color:#00bcd4;
+
+    text-decoration:none;
+
+}
+
+#markdown-content a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ==========================================================
+   LISTS
+========================================================== */
+
+#markdown-content ul,
+
+#markdown-content ol{
+
+    margin:20px 0 20px 35px;
+
+}
+
+#markdown-content li{
+
+    margin:10px 0;
+
+}
+
+/* ==========================================================
+   HORIZONTAL LINE
+========================================================== */
+
+#markdown-content hr{
+
+    border:none;
+
+    border-top:1px solid #333;
+
+    margin:40px 0;
+
+}
+
+/* ==========================================================
+   INLINE CODE
+========================================================== */
+
+#markdown-content code{
+
+    background:#262626;
+
+    color:#00e5ff;
+
+    padding:3px 8px;
+
+    border-radius:6px;
+
+    font-size:.95em;
+
+}
+
+/* ==========================================================
+   CODE BLOCKS
+========================================================== */
+
+#markdown-content pre{
+
+    background:#111;
+
+    border-left:5px solid #00bcd4;
+
+    border-radius:10px;
+
+    overflow-x:auto;
+
+    padding:20px;
+
+    margin:30px 0;
+
+}
+
+#markdown-content pre code{
+
+    background:none;
+
+    padding:0;
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================================
+   BLOCKQUOTE
+========================================================== */
+
+#markdown-content blockquote{
+
+    border-left:5px solid #00bcd4;
+
+    background:#181818;
+
+    padding:20px;
+
+    margin:30px 0;
+
+    color:#cfcfcf;
+
+    font-style:italic;
+
+}
+
+/* ==========================================================
+   TABLES
+========================================================== */
+
+#markdown-content table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin:35px 0;
+
+    overflow:hidden;
+
+}
+
+#markdown-content th{
+
+    background:#00bcd4;
+
+    color:#111;
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+#markdown-content td{
+
+    border:1px solid #333;
+
+    padding:15px;
+
+}
+
+#markdown-content tr:nth-child(even){
+
+    background:#202020;
+
+}
+
+/* ==========================================================
+   IMAGES
+========================================================== */
+
+#markdown-content img{
+
+    width:100%;
+
+    border-radius:12px;
+
+    margin:30px 0;
+
+    border:2px solid rgba(0,188,212,.35);
+
+}
+
+/* ==========================================================
+   VIDEO / IFRAMES
+========================================================== */
+
+#markdown-content iframe{
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    border:none;
+
+    border-radius:12px;
+
+    margin:25px 0;
+
+}
+
+/* ==========================================================
+   DETAILS
+========================================================== */
+
+#markdown-content details{
+
+    margin:20px 0;
+
+    background:#191919;
+
+    border:1px solid #333;
+
+    border-radius:10px;
+
+    padding:15px;
+
+}
+
+#markdown-content summary{
+
+    cursor:pointer;
+
+    color:#00bcd4;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   KEYBOARD KEY
+========================================================== */
+
+#markdown-content kbd{
+
+    background:#2b2b2b;
+
+    border:1px solid #555;
+
+    padding:4px 8px;
+
+    border-radius:6px;
+
+}
+
+/* ==========================================================
+   TEXT SELECTION
+========================================================== */
+
+#markdown-content::selection{
+
+    background:#00bcd4;
+
+    color:#111;
+
+}
+
+/* ==========================================================
+   FADE ANIMATION
+========================================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:768px){
+
+    #reader{
+
+        padding:25px;
+
+    }
+
+    #markdown-content{
+
+        font-size:16px;
+
+    }
+
+    #markdown-content h1{
+
+        font-size:32px;
+
+    }
+
+    #markdown-content h2{
+
+        font-size:26px;
+
+    }
+
+    #markdown-content h3{
+
+        font-size:22px;
+
+    }
+
+    #markdown-content pre{
+
+        padding:15px;
+
+    }
+
+}
+
+/* ==========================================================
+   BLOGS.CSS
+   PART 3
+   Footer • Loading • Utilities • Animations • Responsive
+========================================================== */
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer{
+
+    margin-top:80px;
+
+    background:#0d0d0d;
+
+    border-top:2px solid #00bcd4;
+
+    padding:60px 20px;
+
+}
+
+.footer-content{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.footer-content h2{
+
+    color:#00bcd4;
+
+    font-size:36px;
+
+    margin-bottom:15px;
+
+}
+
+.footer-content p{
+
+    color:#cfcfcf;
+
+    margin-bottom:20px;
+
+    line-height:1.8;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:25px;
+
+    margin:30px 0;
+
+}
+
+.footer-links a{
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+.footer-links a:hover{
+
+    color:#00bcd4;
+
+}
+
+/* ==========================================================
+   LOADING
+========================================================== */
+
+.loading{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:100px;
+
+}
+
+.loader{
+
+    width:60px;
+
+    height:60px;
+
+    border:6px solid #2c2c2c;
+
+    border-top:6px solid #00bcd4;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================================================
+   EMPTY SEARCH
+========================================================== */
+
+.no-results{
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    color:#999;
+
+}
+
+.no-results h2{
+
+    color:#00bcd4;
+
+    margin-bottom:15px;
+
+}
+
+/* ==========================================================
+   FADE CLASSES
+========================================================== */
+
+.fade-in{
+
+    animation:fadeIn .5s ease;
+
+}
+
+.fade-out{
+
+    animation:fadeOut .35s ease;
+
+}
+
+@keyframes fadeOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================================================
+   SCALE ANIMATION
+========================================================== */
+
+.scale{
+
+    animation:scale .35s ease;
+
+}
+
+@keyframes scale{
+
+    from{
+
+        transform:scale(.95);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================================================
+   BACK TO TOP
+========================================================== */
+
+#backToTop{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#00bcd4;
+
+    color:#111;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    display:none;
+
+    transition:.3s;
+
+    z-index:999;
+
+}
+
+#backToTop:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 0 20px rgba(0,188,212,.6);
+
+}
+
+/* ==========================================================
+   SELECTION
+========================================================== */
+
+::selection{
+
+    background:#00bcd4;
+
+    color:#111;
+
+}
+
+/* ==========================================================
+   FOCUS
+========================================================== */
+
+button:focus,
+
+input:focus,
+
+a:focus{
+
+    outline:2px solid #00bcd4;
+
+    outline-offset:3px;
+
+}
+
+/* ==========================================================
+   SMOOTH TRANSITIONS
+========================================================== */
+
+button,
+
+a,
+
+.blog-card,
+
+.meta span,
+
+.tags button,
+
+#closeReader{
+
+    transition:all .3s ease;
+
+}
+
+/* ==========================================================
+   HIDE UTILITIES
+========================================================== */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.show{
+
+    display:block !important;
+
+}
+
+.flex{
+
+    display:flex !important;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+    footer{
+
+        padding:50px 20px;
+
+    }
+
+    .footer-content h2{
+
+        font-size:30px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .footer-links{
+
+        flex-direction:column;
+
+        gap:18px;
+
+    }
+
+    #backToTop{
+
+        width:48px;
+
+        height:48px;
+
+        right:18px;
+
+        bottom:18px;
+
+        font-size:18px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .footer-content h2{
+
+        font-size:24px;
+
+    }
+
+    .footer-content p{
+
+        font-size:15px;
+
+    }
+
+    footer{
+
+        padding:40px 15px;
+
+    }
+
+}
+
+/* ==========================================================
+   PRINT
+========================================================== */
+
+@media print{
+
+    nav,
+
+    footer,
+
+    .tags,
+
+    #search,
+
+    #closeReader,
+
+    #backToTop{
+
+        display:none !important;
+
+    }
+
+    body{
+
+        background:#fff;
+
+        color:#000;
+
+    }
+
+    #reader{
+
+        display:block !important;
+
+        border:none;
+
+        box-shadow:none;
+
+        width:100%;
+
+        margin:0;
+
+        padding:0;
+
+    }
+
+}
+
+/* Reading Time */
+
+.reading-time{
+
+    color:#00bcd4;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+}
+
+/* TOC */
+
+.table-of-contents{
+
+    background:#181818;
+
+    border:1px solid rgba(0,188,212,.3);
+
+    padding:20px;
+
+    border-radius:10px;
+
+    margin-bottom:35px;
+
+}
+
+.table-of-contents h3{
+
+    color:#00bcd4;
+
+    margin-bottom:10px;
+
+}
+
+.table-of-contents ul{
+
+    margin-left:20px;
+
+}
+
+.table-of-contents a{
+
+    color:#ddd;
+
+}
+
+.table-of-contents a:hover{
+
+    color:#00bcd4;
+
+}
+
+/* Copy Button */
+
+.copy-btn{
+
+    position:absolute;
+
+    top:10px;
+
+    right:10px;
+
+    background:#00bcd4;
+
+    color:#111;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+}
+
+.copy-btn:hover{
+
+    box-shadow:0 0 15px rgba(0,188,212,.6);
+
+}
