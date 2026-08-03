@@ -55,7 +55,7 @@ section {
 }
 
 #techs {
-    background: #001d3d
+    background: #000814;
 }
 
 #projects {
@@ -206,7 +206,7 @@ p {
 
 /* Technology Section */
 #technology {
-    background-color: #121212;
+    background-color: #000814;
     padding: 80px 20px;
     color: #fff;
     text-align: center;
