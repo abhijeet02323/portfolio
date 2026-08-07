@@ -1,268 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abhijeet Dwivedi — developer portfolio.">
+  <title>Abhijeet Dwivedi · Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="script.js"></script>
-    <!-- Navbar -->
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#techs">Tech-Stacks</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="blogs.html">Blogs</a></li>
-        </ul>
-    </nav>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <nav class="navbar" aria-label="Primary navigation">
+    <a class="brand" href="#about">AD<span>.</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#techs">Stack</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="blogs.html">Blogs</a></li>
+    </ul>
+  </nav>
 
-    <!-- Spacer to prevent content overlap -->
-    <div class="spacer"></div>
-
-    <!-- About Section -->
-<section id="about">
-        <div class="about-container">
-            <!-- Left Side: Photo -->
-            <div class="photo-container">
-                <img src="images/abhijeet.png" alt="Abhijeet Dwivedi" class="profile-photo">
-            </div>
-
-            <!-- Right Side: About Text -->
-            <div class="about-text">
-                <h1>This is Abhijeet Dwivedi</h1>
-                <p>Hello! I'm a passionate developer spending most of my time in Linux terminals, exploring AI, Machine Learning, and Web Development. I love creating projects that solve real problems and enhance user experience. Welcome to my personal portfolio!</p>
-            </div>
+  <main>
+    <section id="about" class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">// developer · linux enthusiast</p>
+        <h1>Building useful things<br>from the <span>terminal.</span></h1>
+        <p class="intro">Hello, I’m Abhijeet Dwivedi. I explore AI, machine learning, web development, and cloud systems—turning practical ideas into thoughtful experiences.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projects">Explore my work <span>↓</span></a>
+          <a class="button ghost" href="mailto:dwivedi.abhijeet1301@gmail.com">Get in touch</a>
         </div>
-</section>
-
-     <!-- Tech Section -->
-<section id="techs">
-    <div class="tech-container">
-        <h1 class="tech-title">Technologies I Use</h1>
-        <div class="tech-grid">
-            
-            <!-- Frontend -->
-            <div class="tech-card">
-                <h2>Frontend</h2>
-                <div class="tech-icons">
-                    <style>display::view-transition-group</style>
-                    </style>
-                        
-                    <div class="tech-item">
-                        <img src="images/html.png" width=70 alt="HTML5">
-                        <img src="images/css.png" width=70 alt="CSS3"><br>
-                        <img src="images/js.png" width=70 alt="JavaScript">
-                        <img src="images/react.png" width=70 alt="React.js">
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Backend -->
-            <div class="tech-card">
-                <h2>Backend</h2>
-                <div class="tech-icons">
-                    <style>
-                         img {
-                            margin: 10px;
-                        }
-                    </style>
-                    <div class="tech-item">
-                        <img src="images/python.png" width=70 alt="Node.js">
-                        <img src="images/bash.png" width=70 alt="Bash"><br>
-                        <img src="images/C.png" width=70 alt="Python">
-                        <img src="images/go.png" width=80 alt="Go"><br>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Database -->
-            <div class="tech-card">
-                <h2>Database</h2>
-                <div class="tech-icons">
-                    <div class="tech-item">
-                        <img src="images/mysql.png" width="80  alt="MySQL">
-                    </div>
-                    <div class="tech-item">
-                        <img src="images/mongodb.png" width="80" alt="MongoDB">
-                    </div>
-                    
-                </div>
-            </div>
-
-            <!-- Deployment -->
-            <div class="tech-card">
-                <h2>Linux System</h2>
-                <div class="tech-icons">
-                    <div class="tech-item">
-                        <img src="images/arch.png" width=70 alt="Linux">
-                        <img src="images/git.png" width=70 alt="Linux"><br>
-                        <img src="images/hyprland.png" width=70 alt="Linux">
-                    </div>
-                </div>
-                
-            </div>
-            <div class="tech-card">
-                <h2>Devops & Cloud</h2>
-                <div class="tech-icons">
-                    <div class="tech-item">
-                        <img src="images/aws.png" width=80 alt="aws">
-                         <img src="images/kubernetes.png" width=70 alt="kubernetes"><br>
-                        <img src="images/docker.png" width=190 alt="Docker">                 
-                    </div>
-                </div>
-                
-            </div>
-
-             <div class="tech-card">
-                <h2>Tools & Editors</h2>
-                <div class="tech-icons">
-                    <div class="tech-item">
-                        <img src="images/typst.png" width=60 alt="Typst">
-                         <img src="images/neovim.png" width=50 alt="Neovim"><br>
-                        <img src="images/figma.png" width=60 alt="Figma">  
-                        <img src="images/vscode.png" width=60 alt="VSCode"><br>
-                        <img src="images/obsidian.png" width=60 alt="Obsidian"> 
-                        <img src="images/canva.png" width=60 alt="Canva"><br>                  
-                    </div>
-                </div>
-                
-            </div>
-
+      </div>
+      <div class="scene reveal" aria-label="A three dimensional developer terminal illustration">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="terminal-card tilt-card">
+          <div class="terminal-top"><span></span><span></span><span></span><p>abhijeet@portfolio: ~</p></div>
+          <div class="terminal-body">
+            <p><i>$</i> whoami</p><strong>Abhijeet Dwivedi</strong>
+            <p><i>$</i> status</p><strong class="status">● available to build</strong>
+            <p><i>$</i> focus</p><em>web · cloud · systems<span class="cursor">_</span></em>
+          </div>
         </div>
-    </div>
-</section>
+        <div class="profile-disc"><img src="images/abhijeet.png" alt="Abhijeet Dwivedi"></div>
+        <div class="floating-chip chip-code">&lt;/&gt;</div>
+        <div class="floating-chip chip-cloud">☁</div>
+      </div>
+    </section>
 
+    <section id="techs" class="stack-section">
+      <div class="section-heading reveal"><p class="eyebrow">// toolkit</p><h2>Technologies I use.</h2><p>Tools I reach for when building dependable products.</p></div>
+      <div class="tech-grid">
+        <article class="tech-card tilt-card reveal"><span class="card-number">01</span><h3>Frontend</h3><div class="tech-icons"><img src="images/html.png" alt="HTML5"><img src="images/css.png" alt="CSS3"><img src="images/js.png" alt="JavaScript"><img src="images/react.png" alt="React"></div></article>
+        <article class="tech-card tilt-card reveal"><span class="card-number">02</span><h3>Backend</h3><div class="tech-icons"><img src="images/python.png" alt="Python"><img src="images/bash.png" alt="Bash"><img src="images/C.png" alt="C"><img src="images/go.png" alt="Go"></div></article>
+        <article class="tech-card tilt-card reveal"><span class="card-number">03</span><h3>Data</h3><div class="tech-icons"><img src="images/mysql.png" alt="MySQL"><img src="images/mongodb.png" alt="MongoDB"></div></article>
+        <article class="tech-card tilt-card reveal"><span class="card-number">04</span><h3>Cloud & DevOps</h3><div class="tech-icons"><img src="images/aws.png" alt="AWS"><img src="images/kubernetes.png" alt="Kubernetes"><img src="images/docker.png" alt="Docker"></div></article>
+        <article class="tech-card tilt-card reveal"><span class="card-number">05</span><h3>Linux systems</h3><div class="tech-icons"><img src="images/arch.png" alt="Arch Linux"><img src="images/git.png" alt="Git"><img src="images/hyprland.png" alt="Hyprland"></div></article>
+        <article class="tech-card tilt-card reveal"><span class="card-number">06</span><h3>Tools & editors</h3><div class="tech-icons"><img src="images/neovim.png" alt="Neovim"><img src="images/vscode.png" alt="VS Code"><img src="images/figma.png" alt="Figma"><img src="images/obsidian.png" alt="Obsidian"></div></article>
+      </div>
+    </section>
 
-    <!-- Projects Section -->
-<section id="projects">
+    <section id="projects" class="projects-section">
+      <div class="section-heading reveal"><p class="eyebrow">// selected work</p><h2>Things I’ve built.</h2></div>
+      <div class="projects-grid">
+        <a href="https://github.com/abhijeet02323/ssh-security-monitor" class="project-card tilt-card reveal" target="_blank" rel="noreferrer"><span class="project-index">01</span><div><h3>SSH Security Monitor <b>↗</b></h3><p>A cloud-based Linux log monitoring system that detects suspicious SSH activity using Python automation.</p><div class="tags"><span>AWS EC2</span><span>Python</span><span>journalctl</span></div></div></a>
+        <a href="https://github.com/abhijeet02323/civicops-admin" class="project-card tilt-card reveal" target="_blank" rel="noreferrer"><span class="project-index">02</span><div><h3>CivicOps Admin <b>↗</b></h3><p>An administrative dashboard for monitoring civic reports, managing workflows, and coordinating departments.</p><div class="tags"><span>Analytics</span><span>Workflows</span><span>Monitoring</span></div></div></a>
+        <a href="https://github.com/abhijeet02323/civic-ops" class="project-card tilt-card reveal" target="_blank" rel="noreferrer"><span class="project-index">03</span><div><h3>CivicOps <b>↗</b></h3><p>A backend API for citizen issue reporting, routing evidence and reports to relevant public departments.</p><div class="tags"><span>AWS S3</span><span>PostgreSQL</span><span>Twilio</span></div></div></a>
+      </div>
+    </section>
+  </main>
 
-    <h1 class="projects-title">Projects</h1>
-
-    <div class="projects-grid">
-
-        <a href="https://github.com/abhijeet02323/ssh-security-monitor" class="project-card">
-
-            <div class="project-title">
-                SSH Security Monitor
-                <span>↗</span>
-            </div>
-
-            <p class="project-description">
-A cloud-based Linux log monitoring system that detects suspicious SSH activities using Python automation, helping demonstrate real-world DevOps, security monitoring, and cloud engineering practices.
-            </p>
-
-            <div class="project-tech">
-                <span>SSH Monitor</span>
-                <span>AWS EC2</span>
-                <span>journalctl</span>
-                <span>Amazon Linux</span>
-            </div>
-
-        </a>
-
-        <a href="https://github.com/abhijeet02323/civicops-admin" class="project-card">
-
-            <div class="project-title">
-                CivicOps Admin
-                <span>↗</span>
-            </div>
-
-            <p class="project-description">
-                Administrative dashboard for the CivicOps crowdsourced civic issue reporting & resolution system with real-time monitoring, workflow management, analytics, and department coordination.
-            </p>
-            <div class="project-tech">
-                <span>Real Time Monitoring</span>
-                <span>Workflow Management</span>
-                <span>Analytics</span>
-            </div>
-
-        </a>
-
-        <a href="https://github.com/abhijeet02323/civic-ops" class="project-card">
-
-            <div class="project-title">
-                CivicOps
-                <span>↗</span>
-            </div>
-
-            <p class="project-description">
-            A backend API for citizens to report civic issues (potholes, drainage, waste management, etc.) with photos and audio notes, routed to relevant government departments. Built as a prototype during initial testing phases. 
-            </p>
-
-            <div class="project-tech">
-                <span>AWS S3</span>
-                <span>PostgreSQL</span>
-                <span>Twilio</span>
-            </div>
-
-        </a>
-
-    </div>
-</section>
-
-<footer id="contact" class="footer">
-
-    <div class="footer-container">
-
-        <!-- Contact -->
-        <div class="footer-section">
-            <h3>Contact</h3>
-
-            <p>Email</p>
-            <a href="mailto:dwivedi.abhijeet1301@gmail.com">
-                dwivedi.abhijeet1301@gmail.com
-            </a>
-
-            
-            <p>Location</p>
-            <span>Lucknow, Uttar Pradesh, India</span>
-        </div>
-
-        <!-- Important Links -->
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-
-            <a href="#about">About</a>
-            <a href="#techs">Technology</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-
-        <!-- Professional Links -->
-        <div class="footer-section">
-            <h3>Professional</h3>
-
-            <a href="https://github.com/abhijeet02323" target="_blank">
-                GitHub ↗
-            </a>
-
-            <a href="https://linkedin.com/in/dwivediabhijeet" target="_blank">
-                LinkedIn ↗
-            </a>
-
-            <a href="resume.pdf" target="_blank">
-                Resume ↗
-            </a>
-
-            <a href="mailto:dwivedi.abhijeet1301@gmail.com">
-                Hire Me
-            </a>
-        </div>
-
-    </div>
-
-    <hr>
-
-    <div class="footer-bottom">
-        © 2026 Abhijeet Dwivedi • Built with HTML, CSS & JavaScript
-    </div>
-</footer>
-</div>
-
-</div>
+  <footer id="contact"><div><p class="eyebrow">// let’s connect</p><h2>Have an idea worth building?</h2><a class="footer-email" href="mailto:dwivedi.abhijeet1301@gmail.com">dwivedi.abhijeet1301@gmail.com <span>↗</span></a></div><div class="footer-links"><a href="https://github.com/abhijeet02323" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com/in/dwivediabhijeet" target="_blank" rel="noreferrer">LinkedIn</a><a href="blogs.html">Blogs</a></div><small>© 2026 Abhijeet Dwivedi · Built with HTML, CSS & JavaScript</small></footer>
+  <script src="script.js"></script>
 </body>
 </html>
