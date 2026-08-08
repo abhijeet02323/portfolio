@@ -20,7 +20,7 @@ A distributed cloud is a cloud architecture where computing resources are spread
 - This model is used to improve performance by reducing latency, meet data residency and regulatory requirements, and support edge computing applications
 
 ### Multicloud
-Multicloud is ==the strategic use of computing services from two or more cloud providers to run an organization's applications and workloads==. This approach allows a company to select the best services from different providers, such as [Amazon Web Services (AWS)](https://aws.amazon.com/), [Microsoft Azure](https://azure.microsoft.com/), and [Google Cloud](https://cloud.google.com/), based on specific business needs. 
+Multicloud is the strategic use of computing services from two or more cloud providers to run an organization's applications and workloads. This approach allows a company to select the best services from different providers, such as [Amazon Web Services (AWS)](https://aws.amazon.com/), [Microsoft Azure](https://azure.microsoft.com/), and [Google Cloud](https://cloud.google.com/), based on specific business needs. 
 
 By contrast, a **hybrid cloud** combines a public cloud with a private cloud or on-premises infrastructure. A multi-cloud deployment is not necessarily a hybrid one, although a hybrid cloud that uses multiple public clouds would be considered a hybrid multi-cloud.
 
