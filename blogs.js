@@ -22,19 +22,70 @@ const progressBar = document.getElementById("progressBar");
 
 const searchInput = document.getElementById("search");
 
+const viewButtons = document.querySelectorAll(".view-button");
+
+const pdfContent = document.getElementById("pdf-content");
+
+const pdfFrame = document.getElementById("pdfFrame");
+
+const downloadPdf = document.getElementById("downloadPdf");
+
 /* ==========================================================
    CURRENT BLOG
 ========================================================== */
 
 let currentBlog = "";
 
+let currentPdf = "";
+
+/* ==========================================================
+   ARTICLE VIEW SWITCHER
+========================================================== */
+
+function setArticleView(view){
+
+    const showMarkdown = view === "markdown";
+
+    markdownContent.hidden = !showMarkdown;
+
+    pdfContent.hidden = showMarkdown;
+
+    viewButtons.forEach(button=>{
+
+        button.classList.toggle(
+            "active",
+            button.dataset.view === view
+        );
+
+    });
+
+}
+
+viewButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        setArticleView(button.dataset.view);
+
+    });
+
+});
+
 /* ==========================================================
    OPEN BLOG
 ========================================================== */
 
-async function openBlog(file){
+async function openBlog(file,pdfFile){
 
     currentBlog = file;
+
+    currentPdf = pdfFile || file.replace(/\.md$/i,".pdf");
+
+    pdfFrame.src = currentPdf;
+
+    downloadPdf.href = currentPdf;
+
+    setArticleView("markdown");
 
     markdownContent.innerHTML = `
 
@@ -119,7 +170,7 @@ blogCards.forEach((card)=>{
 
         const file = card.dataset.file;
 
-        openBlog(file);
+        openBlog(file,card.dataset.pdf);
 
     });
 
@@ -134,6 +185,12 @@ closeReader.addEventListener("click",()=>{
     reader.classList.remove("active");
 
     markdownContent.innerHTML = "";
+
+    pdfFrame.src = "";
+
+    downloadPdf.href = "#";
+
+    setArticleView("markdown");
 
     progressBar.style.width = "0%";
 
@@ -390,7 +447,7 @@ window.addEventListener("load",()=>{
 
         if(filename===hash){
 
-            openBlog(file);
+            openBlog(file,card.dataset.pdf);
 
         }
 
@@ -643,7 +700,8 @@ searchInput.addEventListener("keydown",(event)=>{
 
         openBlog(
 
-            visible.dataset.file
+            visible.dataset.file,
+            visible.dataset.pdf
 
         );
 
@@ -705,3 +763,38 @@ console.log(
 `${blogCards.length} articles loaded.`
 
 );
+
+/* ==========================================================
+   3D CARD TILT
+========================================================== */
+
+const motionIsAllowed = !window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+if(motionIsAllowed){
+
+    blogCards.forEach(card=>{
+
+        card.addEventListener("pointermove",event=>{
+
+            const bounds = card.getBoundingClientRect();
+
+            const x = (event.clientX-bounds.left)/bounds.width-.5;
+
+            const y = (event.clientY-bounds.top)/bounds.height-.5;
+
+            card.style.transform =
+                `rotateX(${y*-6}deg) rotateY(${x*7}deg) translateY(-8px)`;
+
+        });
+
+        card.addEventListener("pointerleave",()=>{
+
+            card.style.transform = "";
+
+        });
+
+    });
+
+}

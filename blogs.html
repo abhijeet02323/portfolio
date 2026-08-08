@@ -20,6 +20,12 @@
 
 <body>
 
+<!-- Decorative background layers for the 3D theme -->
+
+<div class="ambient ambient-one"></div>
+
+<div class="ambient ambient-two"></div>
+
 <!-- ========================= NAVBAR ========================= -->
 
 <nav>
@@ -78,8 +84,9 @@
 
     <!-- Card -->
 
-    <article class="blog-card"
-        data-file="blogs/Cloud Deployment Model.md">
+    <article class="blog-card tilt-card"
+        data-file="blogs/Cloud Deployment Model.md"
+        data-pdf="blogs/Cloud Deployment Model.pdf">
 
         <h2>Cloud Deployment Model</h2>
 
@@ -121,6 +128,26 @@
 
         </div>
 
+        <div class="reader-tools">
+
+            <div class="view-switcher" role="tablist" aria-label="Article view">
+
+                <button class="view-button active" type="button" data-view="markdown" role="tab">
+                    Markdown
+                </button>
+
+                <button class="view-button" type="button" data-view="pdf" role="tab">
+                    PDF
+                </button>
+
+            </div>
+
+            <a id="downloadPdf" class="download-pdf" href="#" download>
+                Download PDF ↓
+            </a>
+
+        </div>
+
     </div>
 
     <article id="markdown-content">
@@ -128,6 +155,12 @@
         <!-- Markdown Loaded Here -->
 
     </article>
+
+    <div id="pdf-content" class="pdf-content" hidden>
+
+        <iframe id="pdfFrame" title="PDF article viewer"></iframe>
+
+    </div>
 
 </section>
 

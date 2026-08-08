@@ -106,7 +106,7 @@ section, footer { padding: clamp(84px, 11vw, 150px) max(5vw, 24px); }
 .card-number, .project-index { color: var(--cyan); font: 12px "Courier New", monospace; }
 .tech-card h3 { margin: 25px 0; color: var(--white); font-size: 1.2rem; }
 .tech-icons { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.tech-icons img { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.26)); transition: transform 0.2s; }
+.tech-icons img { width: 60px; height: 60px; object-fit: contain; filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.26)); transition: transform 0.2s; }
 .tech-icons img:hover { transform: translateY(-5px) scale(1.08); }
 
 /* =========================================================
